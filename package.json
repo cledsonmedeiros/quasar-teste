@@ -1,0 +1,47 @@
+{
+  "name": "quasar-teste",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
+  "productName": "Quasar App",
+  "author": "Cledson Medeiros <cledson.lmedeiros@hotmail.com>",
+  "private": true,
+  "scripts": {
+    "build": "quasar build -m ssr",
+    "start": "node dist/ssr/index.js",
+    "deploy:fresh": "git pull && quasar build -m ssr && yarn deploy:ssr-pm2_restart",
+    "deploy:ssr-pm2": "pm2 start ./dist/ssr/index.js --name quasar-ssr",
+    "deploy:ssr-pm2_clusterize": "pm2 start ./dist/ssr/index.js --name quasar-ssr -i max",
+    "deploy:ssr-pm2_watch": "pm2 start ./dist/ssr/index.js --name quasar-ssr --watch ./dist/ssr",
+    "deploy:ssr-pm2_deep-monitoring": "pm2 start ./dist/ssr/index.js --name quasar-ssr --deep-monitoring",
+    "deploy:ssr-pm2_restart": "pm2 restart quasar-ssr",
+    "deploy:ssr-pm2_stop": "pm2 stop quasar-ssr",
+    "deploy:ssr-pm2_monitor": "pm2 monitor quasar-ssr",
+    "deploy:ssr-pm2_unmonitor": "pm2 unmonitor quasar-ssr",
+    "deploy:ssr-pm2_kill": "pm2 kill"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "axios": "^0.18.1",
+    "core-js": "^3.6.5",
+    "quasar": "^1.0.0"
+  },
+  "devDependencies": {
+    "@quasar/app": "^2.0.0"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
